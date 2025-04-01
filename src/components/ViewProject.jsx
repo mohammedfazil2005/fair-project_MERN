@@ -17,7 +17,7 @@ const ViewProject = () => {
             <EditProjects/>
             </div>
             <div className='btn'>
-            <a target='_blank' href=""><i className="fa-brands fa-github"></i></a>
+            <a target='blank' href=""><i className="fa-brands fa-github"></i></a>
            
             </div>
 

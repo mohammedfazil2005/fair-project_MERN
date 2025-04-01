@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Card } from 'react-bootstrap'  
 import Modal from 'react-bootstrap/Modal';
+import BaseURL from '../services/baseURL';
 
 
 
-const ProjectsCard = () => {
+const ProjectsCard = ({projects}) => {
 
     const [show, setShow] = useState(false);
 
@@ -18,10 +19,10 @@ const ProjectsCard = () => {
   return (
     <>
     <Card className='btn shadow' onClick={handleShow}>
-        <Card.Img src='https://www.projectstoday.com/images/2024/ProjectInfoImg.webp' variant='top' height={'200px'}/>
+        <Card.Img src={`${BaseURL}/uploads/${projects.projectImg}`} variant='top' height={'200px'}/>
         <Card.Body>
         <Card.Title>
-            Project 1
+            {projects.projectTitle}
         </Card.Title>
         </Card.Body>
     </Card>
@@ -32,12 +33,12 @@ const ProjectsCard = () => {
         <Modal.Body>
             <div className="row">
                 <div className="col-lg-6">
-                    <img src="https://www.projectstoday.com/images/2024/ProjectInfoImg.webp" className='img-fluid' alt="" />
+                    <img src={`${BaseURL}/uploads/${projects.projectImg}`}  className='img-fluid' alt="" />
                 </div>
                 <div className="col-lg-6">
-                    <h3>Project Heading</h3>
-                    <h6>Languages used : <span className='text-warning fw-bold'>Javascript,HtmL</span></h6>
-                    <p style={{textAlign:'justify'}}> <span className='fw-bold'>Project overview</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam iure quasi at, saepe aliquid animi hic!  </p>
+                    <h3>{projects.projectTitle}</h3>
+                    <h6>Languages used : <span className='text-warning fw-bold'>{projects.projectLanguage}</span></h6>
+                    <p style={{textAlign:'justify'}}> <span className='fw-bold'>Project overview</span>{projects.projectOverview} </p>
                 </div>
             </div>
             <div className='float-start mt-3'>
