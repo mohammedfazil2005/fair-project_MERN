@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 import loginImage from  '../assets/login_image.png'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../services/AllAPI';
+import { AuthContext } from '../contexts/AuthenticationContext';
+
+
 
 
 const Auth = ({fromRegisterPage}) => {
+
+    const {isLoggedIn,setIsLoggedIn}=useContext(AuthContext)
+  
 
   const navigate=useNavigate()
 
@@ -48,6 +54,7 @@ const Auth = ({fromRegisterPage}) => {
            
             sessionStorage.setItem("user",serverResponce?.data?.user.username)
             sessionStorage.setItem("token",serverResponce?.data?.token)
+            setIsLoggedIn(true)
             navigate('/dashboard')
           }else if(serverResponce?.status==401){
             alert(serverResponce?.response.data.message)

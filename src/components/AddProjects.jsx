@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { addProject } from '../services/AllAPI';
+import { addProjectContext } from '../contexts/ContextApi';
+import { data } from 'react-router-dom';
 
 const AddProjects = () => {
   const [show, setShow] = useState(false);
   const [previewImage, setPreviewImage] = useState("")
   const [imageTypeStatus, setImageTypeStatus] = useState(false)
+
+  const {addProjectResponce,setAddProjectResponce}=useContext(addProjectContext)
+
+  console.log(addProjectResponce)
+
+  
+
+
   const [projectData, setProjectData] = useState({
     projectImg: "",
     projectTitle: "",
@@ -44,6 +54,7 @@ const AddProjects = () => {
         console.log(serverResponce)
 
         if (serverResponce.status == 201) {
+          setAddProjectResponce(serverResponce.data)
           alert("Successfully created")
           handleClose()
         } else {

@@ -19,10 +19,10 @@ const ProjectsCard = ({projects}) => {
   return (
     <>
     <Card className='btn shadow' onClick={handleShow}>
-        <Card.Img src={`${BaseURL}/uploads/${projects.projectImg}`} variant='top' height={'200px'}/>
+        <Card.Img src={`${BaseURL}/uploads/${projects?.projectImg}`} variant='top' height={'200px'}/>
         <Card.Body>
         <Card.Title>
-            {projects.projectTitle}
+            {projects?.projectTitle}
         </Card.Title>
         </Card.Body>
     </Card>
@@ -33,12 +33,12 @@ const ProjectsCard = ({projects}) => {
         <Modal.Body>
             <div className="row">
                 <div className="col-lg-6">
-                    <img src={`${BaseURL}/uploads/${projects.projectImg}`}  className='img-fluid' alt="" />
+                    <img src={`${BaseURL}/uploads/${projects?.projectImg}`}  className='img-fluid' alt="" />
                 </div>
                 <div className="col-lg-6">
-                    <h3>{projects.projectTitle}</h3>
-                    <h6>Languages used : <span className='text-warning fw-bold'>{projects.projectLanguage}</span></h6>
-                    <p style={{textAlign:'justify'}}> <span className='fw-bold'>Project overview</span>{projects.projectOverview} </p>
+                    <h3>{projects?.projectTitle}</h3>
+                    <h6>Languages used : <span className='text-warning fw-bold'>{projects?.projectLanguage}</span></h6>
+                    <p style={{textAlign:'justify'}}> <span className='fw-bold'>Project overview</span>{projects?.projectOverview} </p>
                 </div>
             </div>
             <div className='float-start mt-3'>
