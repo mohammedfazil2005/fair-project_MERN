@@ -4,7 +4,7 @@ import DashBoard from "./pages/DashBoard"
 import Projects from "./pages/Projects"
 import Auth from "./pages/Auth"
 import Footer from "./components/Footer"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AuthContext } from "./contexts/AuthenticationContext"
 
 
@@ -13,7 +13,13 @@ import { AuthContext } from "./contexts/AuthenticationContext"
 function App() {
   const {isLoggedIn,setIsLoggedIn}=useContext(AuthContext)
 
-  console.log(isLoggedIn)
+  useEffect(()=>{
+    if(sessionStorage.getItem("token")){
+      setIsLoggedIn(true)
+    }
+  },[isLoggedIn])
+
+
   return (
     <>
       <Routes>
